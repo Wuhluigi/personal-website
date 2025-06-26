@@ -13,6 +13,23 @@
     --font-weight-bold: 700;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
+    /* Custom font additions */
+    --font-raleway: "Raleway", sans-serif;
+    --font-ibm-plex-mono: "IBM Plex Mono", monospace;
+    /* Custom font weights */
+    --font-weight-extra-bold: 800;
+    --font-weight-light: 100;
+    /* Custom sizes */
+    --text-name-size: 3rem; /* Larger name */
+    --text-position-size: 1.8rem; /* Slightly smaller position */
+    --text-intro-size: 0.9rem; /* Smaller introduction */
+    --button-text-size: 1rem; /* Button text size */
+    /* Colors */
+    --color-green-500: #00cc00; /* Green for button */
+    --color-gray-400: #ccc; /* Gray for position text */
+    --color-pink-500: #ff00ff; /* Pink for logo */
+    --nav-background: #1a1a1a; /* Nav background */
+    --background-color: #000000; /* Solid black background */
   }
 }
 @layer base {
@@ -30,6 +47,11 @@
     font-feature-settings: var(--default-font-feature-settings, normal);
     font-variation-settings: var(--default-font-variation-settings, normal);
     -webkit-tap-highlight-color: transparent;
+    background-color: var(--background-color); /* Set black background for html */
+  }
+  body {
+    background-color: var(--background-color); /* Set black background for body */
+    color: #ffffff; /* Ensure text is white for contrast */
   }
   hr {
     height: 0;
@@ -120,7 +142,7 @@
   ::placeholder {
     opacity: 1;
   }
-  @supports (not (-webkit-appearance: -apple-pay-button))  or (contain-intrinsic-size: 1px) {
+  @supports (not (-webkit-appearance: -apple-pay-button)) or (contain-intrinsic-size: 1px) {
     ::placeholder {
       color: currentcolor;
       @supports (color: color-mix(in lab, red, red)) {
@@ -175,6 +197,160 @@
   .underline {
     text-decoration-line: underline;
   }
+  /* Custom utilities for your design */
+  .font-raleway-extra-bold {
+    font-family: var(--font-raleway);
+    font-weight: var(--font-weight-extra-bold);
+    font-size: var(--text-name-size);
+    color: #ffffff; /* White text for contrast on black background */
+  }
+  .font-raleway-light {
+    font-family: var(--font-raleway);
+    font-weight: var(--font-weight-light);
+    font-size: var(--text-position-size);
+    color: var(--color-gray-400);
+  }
+  .font-ibm-plex-mono-regular {
+    font-family: var(--font-ibm-plex-mono);
+    font-weight: 400;
+    font-size: var(--text-intro-size);
+    max-width: 400px;
+    line-height: 1.6;
+    color: #9C9C9C; /* White text for contrast on black background */
+  }
+  .font-ibm-plex-mono-bold {
+    font-family: var(--font-ibm-plex-mono);
+    font-weight: 700;
+    font-size: var(--button-text-size);
+    color: #ffffff; /* White text for button */
+  }
+  .bg-green-500 {
+    background-color: var(--color-green-500);
+  }
+  .hover\:bg-green-600:hover {
+    background-color: #00b300;
+  }
+  .text-gray-400 {
+    color: var(--color-gray-400);
+  }
+  .text-pink-500 {
+    color: var(--color-pink-500);
+  }
+  .bg-nav {
+    background-color: var(--nav-background);
+  }
+  .max-w-prose {
+    max-width: 400px;
+  }
+  .mt-5 {
+    margin-top: 1.25rem;
+  }
+  .mt-20 {
+    margin-top: 5rem;
+  }
+  .mb-5 {
+    margin-bottom: 1.25rem;
+  }
+  .mr-5 {
+    margin-right: 1.25rem;
+  }
+  .ml-auto {
+    margin-left: auto;
+  }
+  .flex {
+    display: flex;
+  }
+  .flex-col {
+    flex-direction: column;
+  }
+  .items-center {
+    align-items: center;
+  }
+  .justify-center {
+    justify-content: center;
+  }
+  .flex-1 {
+    flex: 1;
+  }
+  .rounded {
+    border-radius: 0.25rem;
+  }
+  .p-2 {
+    padding: 0.5rem;
+  }
+  .p-5 {
+    padding: 1.25rem;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .w-full {
+    width: 100%;
+  }
+  .max-w-lg {
+    max-width: 32rem;
+  }
+  .h-75 {
+    height: 300px;
+  }
+  .w-75 {
+    width: 300px;
+  }
+  .rounded-full {
+    border-radius: 9999px;
+  }
+  .object-cover {
+    object-fit: cover;
+  }
+  /* Custom layout for Figma design */
+ .intro-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto; /* This centers the flex container */
+    gap: 2rem;
+}
+
+/* On wider screens, switch to side-by-side layout */
+@media (min-width: 768px) {
+    .intro-image {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .intro {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .image {
+        margin-top: 0;
+        justify-content: center;
+    }
+}
+  .image {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.25rem; /* mt-5 */
+  }
+  .nav-fixed {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    padding: 0.5rem 0; /* p-2 */
+  }
+  .footer-fixed {
+    margin-top: auto;
+    padding: 1.25rem; /* p-5 */
+    text-align: center;
+    width: 100%;
+    background-color: var(--nav-background);
+  }
 }
 @property --tw-font-weight {
   syntax: "*";
@@ -186,4 +362,6 @@
       --tw-font-weight: initial;
     }
   }
+  /* Add Google Fonts link via CSS */
+  @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;800&family=IBM+Plex+Mono:wght@400;700&display=swap');
 }
